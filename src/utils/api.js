@@ -9,6 +9,9 @@ const config = {
   api: {
     comics: {
       path: '/comics'
+    },
+    comic: {
+      path: '/comics/:id'
     }
   }
 }

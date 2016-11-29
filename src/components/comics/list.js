@@ -10,8 +10,10 @@ module.exports = (state, send) => {
   }
 
   return html `
-    <div class="container">
-      ${list.map((item) => comic(item))}
-    </div>
+    <section class="section">
+      <div class="container">
+        ${list.map((item) => comic(item))}
+      </div>
+    </section>
   `
 }
