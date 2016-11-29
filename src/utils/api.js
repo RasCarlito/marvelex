@@ -1,6 +1,7 @@
 const $ = require('jquery')
 const urlComposer = require('url-composer')
 const Promise = require('bluebird')
+const extend = require('lodash/extend')
 
 const config = {
   host: 'http://gateway.marvel.com/v1/public',
@@ -17,12 +18,11 @@ const config = {
 }
 
 module.exports = {
-  get (name, params) {
+  get (name, query = {}) {
     const url = urlComposer.build({
       host: config.host,
       path: config.api[name].path,
-      query: { apikey: config.key },
-      params
+      query: extend(query, { apikey: config.key })
     })
 
     return new Promise((resolve, reject) => {

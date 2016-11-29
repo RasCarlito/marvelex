@@ -1,4 +1,5 @@
 const api = require('utils/api')
+const get = require('lodash/get')
 
 module.exports = {
   namespace: 'comics',
@@ -7,7 +8,14 @@ module.exports = {
   },
   effects: {
     fetch: (data, state, send, done) => {
-      api.get('comics').then((data) => send('comics:set', data, done))
+      const query = {}
+      const search = get(data, 'search')
+
+      if (search) {
+        query.titleStartsWith = search
+      }
+
+      api.get('comics', query).then((result) => send('comics:set', result, done))
     }
   },
   reducers: {
