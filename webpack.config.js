@@ -51,8 +51,6 @@ var common = {
   ],
   postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
 
-  devtool: 'source-map',
-
   inline: true,
   progress: true
 }
@@ -84,6 +82,8 @@ var development = {
     new DashboardPlugin()
   ],
 
+  devtool: 'source-map',
+
   watch: true,
   keepalive: true,
   failOnError: false
@@ -111,7 +111,7 @@ var production = {
     ]),
     new webpack.optimize.OccurenceOrderPlugin(),
     // extract CSS into a separate file
-    new ExtractTextPlugin('./[hash].css', { allChunks: true }),
+    new ExtractTextPlugin('[hash].css', { allChunks: true }),
     // minify & mangle JS/CSS
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
