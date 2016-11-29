@@ -1,11 +1,13 @@
 // Dependencies
 const choo = require('choo')
+const log = require('choo-log')
+
+require('./index.scss')
 
 // Init app
 const app = choo()
 
 // Plugins
-const log = require('choo-log')
 app.use(log())
 
 // Init models

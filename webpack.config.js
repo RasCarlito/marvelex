@@ -51,6 +51,8 @@ var common = {
   ],
   postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
 
+  devtool: 'source-map',
+
   inline: true,
   progress: true
 }
