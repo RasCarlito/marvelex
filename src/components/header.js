@@ -6,7 +6,7 @@ module.exports = () => {
       <div class="hero-body">
         <div class="container">
           <h1 class="title">
-            Marvelex
+            <a href="/">Marvelex</a>
           </h1>
           <h2 class="subtitle">
             The Marvel Codex
