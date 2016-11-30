@@ -18,11 +18,15 @@ const config = {
 }
 
 module.exports = {
-  get (name, query = {}) {
+  get (name, options = {}) {
+    const query = extend(options.query, { apikey: config.key })
+    const params = options.params
+
     const url = urlComposer.build({
       host: config.host,
       path: config.api[name].path,
-      query: extend(query, { apikey: config.key })
+      params,
+      query
     })
 
     return new Promise((resolve, reject) => {

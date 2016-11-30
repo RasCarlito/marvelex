@@ -6,22 +6,24 @@ module.exports = (comic) => {
 
   return html `
     <div class="box">
-      <article class="media">
-        <div class="media-left">
-          <figure class="image">
-            <img src="${src}" style="max-width: 72px;">
-          </figure>
-        </div>
-        <div class="media-content">
-          <div class="content">
-            <p>
-              <strong>${comic.title}</strong>
-              <br>
-              ${comic.description}
-            </p>
+      <a href="/comics/${comic.id}">
+        <article class="media">
+          <div class="media-left">
+            <figure class="image">
+              <img src="${src}" style="max-width: 72px;">
+            </figure>
           </div>
-        </div>
-      </article>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong>${comic.title}</strong>
+                <br>
+                ${comic.description}
+              </p>
+            </div>
+          </div>
+        </article>
+      </a>
     </div>
   `
 }
