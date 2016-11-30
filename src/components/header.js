@@ -13,6 +13,18 @@ module.exports = () => {
           </h2>
         </div>
       </div>
+      <div class="hero-foot">
+        <nav class="tabs is-boxed">
+          <div class="container">
+            <ul>
+              <li class="is-active"><a>Home</a></li>
+              <li><a>Comics</a></li>
+              <li><a>Characters</a></li>
+              <li><a>Creators</a></li>
+            </ul>
+          </div>
+        </nav>
+    </div>
     </section>
   `
 }
