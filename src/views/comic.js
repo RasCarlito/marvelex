@@ -1,6 +1,7 @@
 const html = require('choo/html')
 
 const header = require('components/header')
+const loading = require('components/loading')
 const comicDetail = require('components/comics/detail')
 
 module.exports = (state, prev, send) => {
@@ -17,17 +18,9 @@ module.exports = (state, prev, send) => {
       ${header()}
       <section class="section">
         <div class="container">
-          ${display()}
+          ${comic ? comicDetail(comic) : loading()}
         </div>
       </section>
     </div>
   `
-
-  function display () {
-    if (!comic) {
-      return html `<h3>Loading</h3>`
-    }
-
-    return comicDetail(comic)
-  }
 }

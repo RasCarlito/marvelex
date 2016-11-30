@@ -2,6 +2,9 @@ const html = require('choo/html')
 const once = require('lodash/once')
 
 const comic = require('./item')
+const error = require('./error')
+const empty = require('./empty')
+const loading = require('components/loading')
 
 const firstFetch = once((cb) => cb())
 
@@ -22,13 +25,11 @@ module.exports = (state, send) => {
 
   function display () {
     if (state.comics.error) {
-      return html `
-        <article class="message is-danger">
-          <div class="message-body">
-            <i class="fa fa-meh-o"></i> Sorry... Could not fetch comics data
-          </div>
-        </article>
-      `
+      return error('Could not fetch comics data')
+    } else if (state.comics.loading) {
+      return loading()
+    } else if (!list.length) {
+      return empty()
     }
 
     return list.map((item) => comic(item))
