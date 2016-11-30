@@ -8,8 +8,10 @@ module.exports = (state, prev, send) => {
   return html `
     <div>
       ${header()}
-      ${search(state, send)}
-      ${list(state, send)}
+      <div class="main">
+        ${search(state, send)}
+        ${list(state, send)}
+      </div>
     </div>
   `
 }

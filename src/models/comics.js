@@ -4,7 +4,9 @@ const get = require('lodash/get')
 module.exports = {
   namespace: 'comics',
   state: {
-    list: []
+    list: [],
+    loading: false,
+    error: false
   },
   effects: {
     fetch: (data, state, send, done) => {
@@ -15,10 +17,23 @@ module.exports = {
         query.titleStartsWith = search
       }
 
-      api.get('comics', query).then((result) => send('comics:set', result, done))
+      send('comics:loading', true, done)
+
+      api.get('comics', query)
+        .then(
+          function onFulfilled (result) {
+            send('comics:set', result, done)
+          },
+          function onRejected () {
+            send('comics:loading', false, done)
+            send('comics:error', true, done)
+          }
+        )
     }
   },
   reducers: {
-    set: (data, state) => ({ list: data })
+    set: (data, state) => ({ list: data, loading: false, error: false }),
+    loading: (isLoading, state) => ({ loading: isLoading, error: false }),
+    error: (error, state) => ({ error })
   }
 }

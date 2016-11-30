@@ -15,8 +15,22 @@ module.exports = (state, send) => {
   return html `
     <section class="section">
       <div class="container">
-        ${list.map((item) => comic(item))}
+        ${display()}
       </div>
     </section>
   `
+
+  function display () {
+    if (state.comics.error) {
+      return html `
+        <article class="message is-danger">
+          <div class="message-body">
+            <i class="fa fa-meh-o"></i> Sorry... Could not fetch comics data
+          </div>
+        </article>
+      `
+    }
+
+    return list.map((item) => comic(item))
+  }
 }
