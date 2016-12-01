@@ -62,3 +62,63 @@
   </div>
 </section>
 ```
+
+# comic detail
+
+```html
+<article class="media">
+  <div class="media-left">
+    <figure class="image">
+      <img src="${src}" style="max-width: 150px;">
+    </figure>
+  </div>
+  <div class="media-content">
+    <div class="content">
+      <h1>${comic.title}</h1>
+      <p>
+        ${comic.description}
+      </p>
+      <hr>
+      <h2>Creators</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${comic.creators.items.map((item) => authorRow(item))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</article>
+```
+
+```html
+<tr>
+  <td>${author.name}</td>
+  <td>${author.role}</td>
+</tr>
+```
+
+# error
+
+```html
+<article class="message is-danger">
+  <div class="message-body">
+    <i class="fa fa-meh-o"></i> Sorry... ${msg}
+  </div>
+</article>
+```
+
+# empty
+
+```html
+<article class="message is-info">
+  <div class="message-body">
+    <i class="fa fa-frown-o"></i> Could not find anything matching your search terms
+  </div>
+</article>
+```
